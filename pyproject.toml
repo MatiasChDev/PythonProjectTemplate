@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "pythonprojecttemplate"
+name = "python_project_template"
 version = "0.1.0"
 description = ""
 authors = ["Matias Chomali <matias.chomali.dev@gmail.com>"]
@@ -7,8 +7,13 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+pytest = "^8.0.1"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
