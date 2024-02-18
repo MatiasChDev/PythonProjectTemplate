@@ -1,2 +1,2 @@
 def dummy_func() -> int:
-    return 1;
+    return 1
