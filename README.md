@@ -4,6 +4,7 @@ TODO:
 - Git hooks
 - Dockerfile
 - Setup jenkins
+- PR template
 - Prevent merges unless Jenkins approves
 
 Showcase
