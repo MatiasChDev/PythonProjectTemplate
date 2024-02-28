@@ -10,5 +10,10 @@ pipeline {
                 }
             }
         }
+        stage('Check Linting') {
+            steps {
+                sh 'ruff check .'
+            }
+        }
     }
 }
