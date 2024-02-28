@@ -4,8 +4,8 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 timeout(time: 5, unit: 'MINUTES') {
-                    sh 'poetry install'
-                    sh 'poetry shell'
+                    sh 'poetry export -f requirements.txt --output requirements.txt'
+                    sh 'pip install -r requirements.txt'
                     sh 'pip freeze'
                 }
             }
