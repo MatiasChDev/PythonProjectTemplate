@@ -18,3 +18,6 @@ Mention jenkins setup
 
 Room for improvement:
 - Multi stage dockerfile
+- implent coverage and export data to github repo in tag or in jenkins
+- Separate tests into unit tests and implementation tests with mock objects
+    - for unit tests, can also have black box and glass box, and implement mutation for glass box
