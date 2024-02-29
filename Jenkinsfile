@@ -13,6 +13,11 @@ pipeline {
                 }
             }
         }
+        stage("Check Linting") {
+            steps {
+                sh 'docker run --rm $(docker build -q .) poetry run nox -s lint'
+            }
+        }
         stage("Run Unit Tests") {
             steps {
                 timeout(time: 10, unit: 'MINUTES') {
