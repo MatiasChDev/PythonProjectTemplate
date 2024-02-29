@@ -6,6 +6,7 @@ TODO:
 - Setup jenkins
 - PR template
 - Prevent merges unless Jenkins approves
+- Cleanup leftover dev comments
 
 Showcase
 
@@ -14,3 +15,6 @@ Features
 What to do after copying template
 
 Mention jenkins setup
+
+Room for improvement:
+- Multi stage dockerfile

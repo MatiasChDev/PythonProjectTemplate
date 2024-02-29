@@ -26,4 +26,15 @@ pipeline {
             }
         }
     }
+    post {
+        success {
+            echo 'Pipeline ran successfully!'
+        }
+        failure {
+            echo 'Pipeline failed :('
+        }
+        always {
+            echo 'Cleanup'
+        }
+    }
 }
