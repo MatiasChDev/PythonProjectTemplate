@@ -19,5 +19,4 @@ def tests(session):
         external=True,
     )
     session.install("-r", "requirements.txt")
-    session.install("pytest")
     session.run("pytest")

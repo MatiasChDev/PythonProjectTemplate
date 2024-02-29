@@ -13,5 +13,12 @@ pipeline {
                 }
             }
         }
+        stage("Run Unit Tests") {
+            steps {
+                timeput(time: 10, unit: 'MINUTES') {
+                    sh 'docker run --rm $(docker build -q .) poetry run nox -s tests'
+                }
+            }
+        }
     }
 }
