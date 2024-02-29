@@ -5,6 +5,3 @@ def test_dummy():
     result: int = dummy_func()
     assert result == 1
 
-
-def test_fail():
-    assert 1 == 0
