@@ -19,3 +19,4 @@ Room for improvement:
 - Separate tests into unit tests and implementation tests with mock objects
     - for unit tests, can also have black box and glass box, and implement mutation for glass box
 - Separate dev dependencies in pyproject
+- Mention pre-commit installation in instructions or automate it
