@@ -2,10 +2,7 @@ This serves as a template for all of my future python projects. It has all basic
 
 TODO:
 - Git hooks (linting, unit tests and poetry)
-- Dockerfile
-- Setup jenkins
 - PR template
-- Prevent merges unless Jenkins approves
 - Cleanup leftover dev comments
 
 Showcase
