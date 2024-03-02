@@ -1,15 +1,34 @@
-FROM python:3.11-alpine3.19
+FROM python:3.11-alpine3.19 as builder
 
 RUN pip install poetry==1.8.1
 
+ENV POETRY_NO_INTERACTION=1 \
+    POETRY_VIRTUALENVS_IN_PROJECT=1 \
+    POETRY_VIRTUALENVS_CREATE=1 \
+    POETRY_CACHE_DIR=/tmp/poetry_cache
+
 WORKDIR /app
 
-COPY . .
+COPY pyproject.toml poetry.lock ./
 
-# Run tests and different stages as part of docker container to take advantage of caching
-# Use docker build --target to run specific stages during tests
-# When installing dependencies, only copy the poetry files so it doesnt delete the cached step everytime I change a src file
+RUN poetry install --no-root && rm -rf $POETRY_CACHE_DIR
 
-RUN poetry install
+FROM builder as testing
 
-CMD ["poetry", "run", "python", "-m", "src.python_project_template.app"]
+COPY src ./src/
+COPY tests ./tests/
+COPY noxfile.py ./
+
+FROM builder as removing-dev-dependencies
+
+RUN poetry install --without dev --sync && rm -rf $POETRY_CACHE_DIR
+
+FROM python:3.11-alpine3.19 as runtime
+
+ENV VIRTUAL_ENV=/app/.venv \
+    PATH="/app/.venv/bin:$PATH"
+
+COPY --from=removing-dev-dependencies ${VIRTUAL_ENV} ${VIRTUAL_ENV}
+COPY src ./src/
+
+CMD ["python", "-m", "src.python_project_template.app"]

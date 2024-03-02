@@ -3,25 +3,25 @@ pipeline {
     stages {
         stage('Build Docker Image') {
             steps {
-                sh 'docker build .'
+                sh 'docker build --target=testing .'
             }
         }
         stage('Install Dependencies') {
             steps {
                 timeout(time: 5, unit: 'MINUTES') {
-                    sh 'docker run --rm $(docker build -q .) poetry show'
+                    sh 'docker run --rm $(docker build --target=testing -q .) poetry show'
                 }
             }
         }
         stage("Check Linting") {
             steps {
-                sh 'docker run --rm $(docker build -q .) poetry run nox -s lint'
+                sh 'docker run --rm $(docker build --target=testing -q .) poetry run nox -s lint'
             }
         }
         stage("Run Unit Tests") {
             steps {
                 timeout(time: 10, unit: 'MINUTES') {
-                    sh 'docker run --rm $(docker build -q .) poetry run nox -s tests'
+                    sh 'docker run --rm $(docker build --target=testing -q .) poetry run nox -s tests'
                 }
             }
         }
@@ -35,6 +35,7 @@ pipeline {
         }
         always {
             echo 'Cleanup'
+            sh 'docker rmi $(docker build --target=testing -q .)'
         }
     }
 }
