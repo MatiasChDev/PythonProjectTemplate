@@ -9,6 +9,7 @@ This is a template for future Python projects. It includes package management, t
 - PR checks that won't allow merge until pipeline passes on Jenkins
 - Multi stage dockerfile for both testing and deployment
 - Branch protection rules preventing pushes directly to main unless through PR
+- PR template
 
 ### Showcase
 
