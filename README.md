@@ -13,6 +13,10 @@ This is a template for future Python projects. It includes package management, t
 
 ### Showcase
 
+Showing git pre-commit hooks, jenkins pipeline and commit check update from jenkins to GH
+
+https://github.com/MatiasChDev/PythonProjectTemplate/assets/34585212/98930ac3-3b10-4160-b5fd-6e29afaba08f
+
 ### What to do after copying template
 
 1. `poetry install`
